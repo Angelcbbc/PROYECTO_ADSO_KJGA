@@ -1,0 +1,5579 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Entity Relationship Diagram - Entity Relationship Diagram1</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_top">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_bottom">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_left">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_right">
+	</div>
+	<canvas width="100" style="position:absolute; z-index:2; visibility:hidden" id="spotlight_c" height="100">
+	</canvas>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesTop">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesRight">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+			</tr>
+			<tr>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute;z-index:4;visibility:hidden" id="linkPopupMenuLayer">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="linkPopupMenuTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="referenceIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="subdiagramIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="transitorIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="documentationIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		CS PPperdidas	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="referencedBys">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="referencedBysTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="vplink">
+		<table border="1" cellpadding="0" cellspacing="0" bordercolor="#A9BFD3">
+			<tr>
+				<td>
+					<table border="0" cellpadding="0" width="100%" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+								<select onchange="vpLinkToggleName()" id="vplink-linkType">
+	<option value="Project Link">Project Link</option>
+	<option value="Page URL">Page URL</option>
+</select>
+							</td>
+							<td style="font-size: 12px;" align="right">
+								<input onclick="javascript: vpLinkToggleName()" id="vplink-checkbox" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p class="PageTitle">
+		<span id="PageTitleText">
+			Entity Relationship Diagram - Entity Relationship Diagram1		</span>
+<a onclick="javascript: showVpLink('PPP Diagramas.vpp://diagram/JlUY5QWFYEDcXg05', 'Entity Relationship Diagram1\nPPP Diagramas.vpp://diagram/JlUY5QWFYEDcXg05', 'Entity Relationship Diagram1', this); return false;" style="padding-left: 16px; font-size: 12px" href="#"><img src="../images/icons/link.png" border="0"> link</a>	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style="position: absolute; top: 0; left: 0; z-index: 20;" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),hideLinkPopup(),hideReferencedBys();">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin('diagram', this.value);hideLinkPopup();showSpotLight('diagram', this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|940.0|499.0|161.0|134.0|DBTable_CO6ibQWFYEDe1Qw6.html|DBTable_CO6ibQWFYEDe1Qw6.html|8O6ibQWFYEDe1Qw5" id="option8O6ibQWFYEDe1Qw5">Te_Mac : Entity</option>
+<option value="shape|1139.0|460.0|161.0|152.0|DBTable_c_SibQWFYEDe1Qwv.html|DBTable_c_SibQWFYEDe1Qwv.html|c_SibQWFYEDe1Qwu" id="optionc_SibQWFYEDe1Qwu">Ver_Mac : Entity</option>
+<option value="shape|20.0|624.0|194.0|58.0|DBTable_rU3_jQWFYEDeSQwS.html|DBTable_rU3_jQWFYEDeSQwS.html|rU3.jQWFYEDeSQwR" id="optionrU3.jQWFYEDeSQwR">Mac_AD_Vacunas : Entity</option>
+<option value="shape|1097.0|120.0|203.0|58.0|DBTable_1Ro_jQWFYEDeSQue.html|DBTable_1Ro_jQWFYEDeSQue.html|1Ro.jQWFYEDeSQud" id="option1Ro.jQWFYEDeSQud">Director_Fundacion : Entity</option>
+<option value="shape|106.0|147.0|207.0|94.0|DBTable_rKEejQWFYEDeSQrd.html|DBTable_rKEejQWFYEDeSQrd.html|rKEejQWFYEDeSQrc" id="optionrKEejQWFYEDeSQrc">Observa : Entity</option>
+<option value="shape|631.0|2.0|158.0|58.0|DBTable_rQR4jQWFYEDeSQ9N.html|DBTable_rQR4jQWFYEDeSQ9N.html|rQR4jQWFYEDeSQ9M" id="optionrQR4jQWFYEDeSQ9M">Tip_Doc : Entity</option>
+<option value="shape|1035.0|299.0|158.0|76.0|DBTable_d78_DQWFYEDeSQmw.html|DBTable_d78_DQWFYEDeSQmw.html|d78_DQWFYEDeSQmv" id="optiond78_DQWFYEDeSQmv">Bario : Entity</option>
+<option value="shape|35.0|732.0|164.0|57.0|DBTable_8E5LDQWFYEDeSQre.html|DBTable_8E5LDQWFYEDeSQre.html|8E5LDQWFYEDeSQrd" id="option8E5LDQWFYEDeSQrd">Vacunas : Entity</option>
+<option value="shape|368.0|138.0|161.0|59.0|DBTable_ioZZ9QWGAqAAqwza.html|DBTable_ioZZ9QWGAqAAqwza.html|ioZZ9QWGAqAAqwzZ" id="optionioZZ9QWGAqAAqwzZ">Condicion : Entity</option>
+<option value="shape|265.0|358.0|183.0|276.0|DBTable_7xLB9QWGAqAAqwmi.html|DBTable_7xLB9QWGAqAAqwmi.html|7xLB9QWGAqAAqwmh" id="option7xLB9QWGAqAAqwmh">Mac_AD : Entity</option>
+<option value="shape|49.0|358.0|165.0|166.0|DBTable_NVmB9QWGAqAAqwld.html|DBTable_NVmB9QWGAqAAqwld.html|NVmB9QWGAqAAqwlc" id="optionNVmB9QWGAqAAqwlc">Proc_Adp : Entity</option>
+<option value="shape|703.0|700.0|185.0|184.0|DBTable_rTS_9QWGAqAAqwjU.html|DBTable_rTS_9QWGAqAAqwjU.html|rTS.9QWGAqAAqwjT" id="optionrTS.9QWGAqAAqwjT">Evento : Entity</option>
+<option value="shape|500.0|659.0|161.0|62.0|DBTable_fflCtQWAUYC85QyR.html|DBTable_fflCtQWAUYC85QyR.html|fflCtQWAUYC85QyQ" id="optionfflCtQWAUYC85QyQ">Estado_P : Entity</option>
+<option value="shape|501.0|434.0|158.0|76.0|DBTable_8lSCtQWAUYC85Qw6.html|DBTable_8lSCtQWAUYC85Qw6.html|8lSCtQWAUYC85Qw5" id="option8lSCtQWAUYC85Qw5">Raza : Entity</option>
+<option value="shape|501.0|525.0|159.0|59.0|DBTable_pLn8tQWAUYC85Qvv.html|DBTable_pLn8tQWAUYC85Qvv.html|pLn8tQWAUYC85Qvu" id="optionpLn8tQWAUYC85Qvu">Sexo : Entity</option>
+<option value="shape|501.0|345.0|158.0|59.0|DBTable_lSKstQWAUYC85Qu0.html|DBTable_lSKstQWAUYC85Qu0.html|lSKstQWAUYC85Quz" id="optionlSKstQWAUYC85Quz">Especie : Entity</option>
+<option value="shape|723.0|392.0|179.0|241.0|DBTable_wI7EtQWAUYC85Qmg.html|DBTable_wI7EtQWAUYC85Qmg.html|wI7EtQWAUYC85Qmf" id="optionwI7EtQWAUYC85Qmf">Mac_PR : Entity</option>
+<option value="shape|830.0|299.0|158.0|77.0|DBTable_34I4tQWAUYC85QkK.html|DBTable_34I4tQWAUYC85QkK.html|34I4tQWAUYC85QkJ" id="option34I4tQWAUYC85QkJ">Localidad : Entity</option>
+<option value="shape|1346.0|59.0|185.0|167.0|DBTable_n7lotQWAUYC85Qha.html|DBTable_n7lotQWAUYC85Qha.html|n7lotQWAUYC85QhZ" id="optionn7lotQWAUYC85QhZ">Director : Entity</option>
+<option value="shape|1239.0|308.0|204.0|112.0|DBTable_UHBE5QWFYEDcXhLy.html|DBTable_UHBE5QWFYEDcXhLy.html|UHBE5QWFYEDcXhLx" id="optionUHBE5QWFYEDcXhLx">Sede : Entity</option>
+<option value="shape|830.0|59.0|221.0|183.0|DBTable_TfV45QWFYEDcXhIr.html|DBTable_TfV45QWFYEDcXhIr.html|TfV45QWFYEDcXhIq" id="optionTfV45QWFYEDcXhIq">Fundacion : Entity</option>
+<option value="shape|603.0|103.0|185.0|166.0|DBTable_Y_sY5QWFYEDcXg_M.html|DBTable_Y_sY5QWFYEDcXg_M.html|o_sY5QWFYEDcXg_L" id="optiono_sY5QWFYEDcXg_L">Client : Entity</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style="position: relative; top: 24;">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/Entity_Relationship_Diagram1.png" usemap="#diagram_map" class="Image" width="1535" height="888"/>
+					<map name="diagram_map">
+<area imageId="diagram" coords="1373.0, 232.0, 1373.0, 235.0, 1051.0, 235.0, 1051.0, 242.0, 1041.0, 242.0, 1041.0, 249.0, 1373.0, 249.0, 1373.0, 308.0, 1387.0, 308.0, 1387.0, 249.0, 1390.0, 249.0, 1390.0, 235.0, 1387.0, 235.0, 1387.0, 232.0" coords2="1373.0, 232.0, 1373.0, 235.0, 1051.0, 235.0, 1051.0, 242.0, 1041.0, 242.0, 1041.0, 249.0, 1373.0, 249.0, 1373.0, 308.0, 1387.0, 308.0, 1387.0, 249.0, 1390.0, 249.0, 1390.0, 235.0, 1387.0, 235.0, 1387.0, 232.0" shape="poly" alt=":Relationship" id="areadiagram_map_EnTk5QWFYEDcXhOT_default" href="DBForeignKey__HTk5QWFYEDcXhOS.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="741.0, 269.0, 741.0, 392.0, 755.0, 392.0, 755.0, 269.0" coords2="741.0, 269.0, 741.0, 392.0, 755.0, 392.0, 755.0, 269.0" shape="poly" alt=":Relationship" id="areadiagram_map_mwCUtQWAUYC85QoF_default" href="DBForeignKey_8wCUtQWAUYC85QoE.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="660.0, 547.0, 660.0, 561.0, 723.0, 561.0, 723.0, 547.0" coords2="660.0, 547.0, 660.0, 561.0, 723.0, 561.0, 723.0, 547.0" shape="poly" alt=":Relationship" id="areadiagram_map_13oCtQWAUYC85QwX_default" href="DBForeignKey_R3oCtQWAUYC85QwW.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="659.0, 471.0, 659.0, 485.0, 723.0, 485.0, 723.0, 471.0" coords2="659.0, 471.0, 659.0, 485.0, 723.0, 485.0, 723.0, 471.0" shape="poly" alt=":Relationship" id="areadiagram_map_gmhCtQWAUYC85QyC_default" href="DBForeignKey_nGhCtQWAUYC85QyB.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="740.0, 633.0, 740.0, 656.0, 650.0, 656.0, 650.0, 659.0, 661.0, 659.0, 661.0, 670.0, 740.0, 670.0, 740.0, 673.0, 754.0, 673.0, 754.0, 670.0, 757.0, 670.0, 757.0, 656.0, 754.0, 656.0, 754.0, 633.0" coords2="740.0, 633.0, 740.0, 656.0, 650.0, 656.0, 650.0, 659.0, 661.0, 659.0, 661.0, 670.0, 740.0, 670.0, 740.0, 673.0, 754.0, 673.0, 754.0, 670.0, 757.0, 670.0, 757.0, 656.0, 754.0, 656.0, 754.0, 633.0" shape="poly" alt=":Relationship" id="areadiagram_map_vUXCtQWAUYC85QzP_default" href="DBForeignKey_TUXCtQWAUYC85QzO.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1339.0, 420.0, 1339.0, 815.0, 888.0, 815.0, 888.0, 829.0, 1339.0, 829.0, 1339.0, 832.0, 1353.0, 832.0, 1353.0, 829.0, 1356.0, 829.0, 1356.0, 815.0, 1353.0, 815.0, 1353.0, 420.0" coords2="1339.0, 420.0, 1339.0, 815.0, 888.0, 815.0, 888.0, 829.0, 1339.0, 829.0, 1339.0, 832.0, 1353.0, 832.0, 1353.0, 829.0, 1356.0, 829.0, 1356.0, 815.0, 1353.0, 815.0, 1353.0, 420.0" shape="poly" alt=":Relationship" id="areadiagram_map_zY7.9QWGAqAAqwk9_default" href="DBForeignKey_1Y7_9QWGAqAAqwk8.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="610.0, 721.0, 610.0, 816.0, 607.0, 816.0, 607.0, 830.0, 610.0, 830.0, 610.0, 833.0, 624.0, 833.0, 624.0, 830.0, 703.0, 830.0, 703.0, 816.0, 624.0, 816.0, 624.0, 721.0" coords2="610.0, 721.0, 610.0, 816.0, 607.0, 816.0, 607.0, 830.0, 610.0, 830.0, 610.0, 833.0, 624.0, 833.0, 624.0, 830.0, 703.0, 830.0, 703.0, 816.0, 624.0, 816.0, 624.0, 721.0" shape="poly" alt=":Relationship" id="areadiagram_map_87f.9QWGAqAAqwlL_default" href="DBForeignKey_07f_9QWGAqAAqwlK.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="339.0, 274.0, 339.0, 277.0, 336.0, 277.0, 336.0, 291.0, 339.0, 291.0, 339.0, 358.0, 353.0, 358.0, 353.0, 291.0, 1333.0, 291.0, 1333.0, 308.0, 1347.0, 308.0, 1347.0, 291.0, 1350.0, 291.0, 1350.0, 277.0, 1347.0, 277.0, 1347.0, 274.0, 1333.0, 274.0, 1333.0, 277.0, 353.0, 277.0, 353.0, 274.0" coords2="339.0, 274.0, 339.0, 277.0, 336.0, 277.0, 336.0, 291.0, 339.0, 291.0, 339.0, 358.0, 353.0, 358.0, 353.0, 291.0, 1333.0, 291.0, 1333.0, 308.0, 1347.0, 308.0, 1347.0, 291.0, 1350.0, 291.0, 1350.0, 277.0, 1347.0, 277.0, 1347.0, 274.0, 1333.0, 274.0, 1333.0, 277.0, 353.0, 277.0, 353.0, 274.0" shape="poly" alt=":Relationship" id="areadiagram_map_Glex9QWGAqAAqwqw_default" href="DBForeignKey_Glex9QWGAqAAqwqv.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="448.0, 547.0, 448.0, 561.0, 501.0, 561.0, 501.0, 547.0" coords2="448.0, 547.0, 448.0, 561.0, 501.0, 561.0, 501.0, 547.0" shape="poly" alt=":Relationship" id="areadiagram_map_tEYJ9QWGAqAAqwsY_default" href="DBForeignKey_BEYJ9QWGAqAAqwsX.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="448.0, 456.0, 448.0, 470.0, 501.0, 470.0, 501.0, 456.0" coords2="448.0, 456.0, 448.0, 470.0, 501.0, 470.0, 501.0, 456.0" shape="poly" alt=":Relationship" id="areadiagram_map_I9sJ9QWGAqAAqws8_default" href="DBForeignKey_XdsJ9QWGAqAAqws7.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="409.0, 634.0, 409.0, 663.0, 406.0, 663.0, 406.0, 677.0, 409.0, 677.0, 409.0, 680.0, 423.0, 680.0, 423.0, 677.0, 500.0, 677.0, 500.0, 663.0, 423.0, 663.0, 423.0, 634.0" coords2="409.0, 634.0, 409.0, 663.0, 406.0, 663.0, 406.0, 677.0, 409.0, 677.0, 409.0, 680.0, 423.0, 680.0, 423.0, 677.0, 500.0, 677.0, 500.0, 663.0, 423.0, 663.0, 423.0, 634.0" shape="poly" alt=":Relationship" id="areadiagram_map_EBFJ9QWGAqAAqwug_default" href="DBForeignKey_h_FJ9QWGAqAAqwuf.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="-5.0, 423.0, -5.0, 426.0, -8.0, 426.0, -8.0, 440.0, -5.0, 440.0, -5.0, 815.0, -8.0, 815.0, -8.0, 829.0, -5.0, 829.0, -5.0, 832.0, 9.0, 832.0, 9.0, 829.0, 572.0, 829.0, 572.0, 832.0, 586.0, 832.0, 586.0, 829.0, 589.0, 829.0, 589.0, 815.0, 586.0, 815.0, 586.0, 721.0, 572.0, 721.0, 572.0, 815.0, 9.0, 815.0, 9.0, 440.0, 49.0, 440.0, 49.0, 426.0, 9.0, 426.0, 9.0, 423.0" coords2="-5.0, 423.0, -5.0, 426.0, -8.0, 426.0, -8.0, 440.0, -5.0, 440.0, -5.0, 815.0, -8.0, 815.0, -8.0, 829.0, -5.0, 829.0, -5.0, 832.0, 9.0, 832.0, 9.0, 829.0, 572.0, 829.0, 572.0, 832.0, 586.0, 832.0, 586.0, 829.0, 589.0, 829.0, 589.0, 815.0, 586.0, 815.0, 586.0, 721.0, 572.0, 721.0, 572.0, 815.0, 9.0, 815.0, 9.0, 440.0, 49.0, 440.0, 49.0, 426.0, 9.0, 426.0, 9.0, 423.0" shape="poly" alt=":Relationship" id="areadiagram_map_gmeZ9QWGAqAAqwzL_default" href="DBForeignKey_9GeZ9QWGAqAAqwzK.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="79.0, 112.0, 79.0, 115.0, 76.0, 115.0, 76.0, 129.0, 79.0, 129.0, 79.0, 358.0, 93.0, 358.0, 93.0, 129.0, 603.0, 129.0, 603.0, 115.0, 93.0, 115.0, 93.0, 112.0" coords2="79.0, 112.0, 79.0, 115.0, 76.0, 115.0, 76.0, 129.0, 79.0, 129.0, 79.0, 358.0, 93.0, 358.0, 93.0, 129.0, 603.0, 129.0, 603.0, 115.0, 93.0, 115.0, 93.0, 112.0" shape="poly" alt=":Relationship" id="areadiagram_map_BHgQjQWFYEDeSQxR_default" href="DBForeignKey_6HgQjQWFYEDeSQxQ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="988.0, 330.0, 988.0, 344.0, 1035.0, 344.0, 1035.0, 330.0" coords2="988.0, 330.0, 988.0, 344.0, 1035.0, 344.0, 1035.0, 330.0" shape="poly" alt=":Relationship" id="areadiagram_map_KyEwjQWFYEDeSQzu_default" href="DBForeignKey_syEwjQWFYEDeSQzt.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1193.0, 330.0, 1193.0, 344.0, 1239.0, 344.0, 1239.0, 330.0" coords2="1193.0, 330.0, 1193.0, 344.0, 1239.0, 344.0, 1239.0, 330.0" shape="poly" alt=":Relationship" id="areadiagram_map_Yp8wjQWFYEDeSQ0M_default" href="DBForeignKey_vJ8wjQWFYEDeSQ0L.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1053.0, 375.0, 1053.0, 405.0, 902.0, 405.0, 902.0, 419.0, 1053.0, 419.0, 1053.0, 422.0, 1067.0, 422.0, 1067.0, 419.0, 1070.0, 419.0, 1070.0, 405.0, 1067.0, 405.0, 1067.0, 375.0" coords2="1053.0, 375.0, 1053.0, 405.0, 902.0, 405.0, 902.0, 419.0, 1053.0, 419.0, 1053.0, 422.0, 1067.0, 422.0, 1067.0, 419.0, 1070.0, 419.0, 1070.0, 405.0, 1067.0, 405.0, 1067.0, 375.0" shape="poly" alt=":Relationship" id="areadiagram_map_dAvwjQWFYEDeSQ2I_default" href="DBForeignKey_5AvwjQWFYEDeSQ2H.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="573.0, 404.0, 573.0, 434.0, 587.0, 434.0, 587.0, 404.0" coords2="573.0, 404.0, 573.0, 434.0, 587.0, 434.0, 587.0, 404.0" shape="poly" alt=":Relationship" id="areadiagram_map_JFzIjQWFYEDeSQ5M_default" href="DBForeignKey_2FzIjQWFYEDeSQ5L.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1431.0, 20.0, 1431.0, 23.0, 789.0, 23.0, 789.0, 37.0, 1431.0, 37.0, 1431.0, 59.0, 1445.0, 59.0, 1445.0, 37.0, 1448.0, 37.0, 1448.0, 23.0, 1445.0, 23.0, 1445.0, 20.0" coords2="1431.0, 20.0, 1431.0, 23.0, 789.0, 23.0, 789.0, 37.0, 1431.0, 37.0, 1431.0, 59.0, 1445.0, 59.0, 1445.0, 37.0, 1448.0, 37.0, 1448.0, 23.0, 1445.0, 23.0, 1445.0, 20.0" shape="poly" alt=":Relationship" id="areadiagram_map_TzH4jQWFYEDeSQ.U_default" href="DBForeignKey_lzH4jQWFYEDeSQ_T.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="699.0, 60.0, 699.0, 103.0, 713.0, 103.0, 713.0, 60.0" coords2="699.0, 60.0, 699.0, 103.0, 713.0, 103.0, 713.0, 60.0" shape="poly" alt=":Relationship" id="areadiagram_map_1w34jQWFYEDeSQ.c_default" href="DBForeignKey_Bw34jQWFYEDeSQ_b.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1300.0, 141.0, 1300.0, 155.0, 1346.0, 155.0, 1346.0, 141.0" coords2="1300.0, 141.0, 1300.0, 155.0, 1346.0, 155.0, 1346.0, 141.0" shape="poly" alt=":Relationship" id="areadiagram_map_JRo.jQWFYEDeSQua_default" href="DBForeignKey_2Ro_jQWFYEDeSQuZ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1051.0, 141.0, 1051.0, 155.0, 1097.0, 155.0, 1097.0, 141.0" coords2="1051.0, 141.0, 1051.0, 155.0, 1097.0, 155.0, 1097.0, 141.0" shape="poly" alt=":Relationship" id="areadiagram_map_sxo.jQWFYEDeSQuk_default" href="DBForeignKey_Ixo_jQWFYEDeSQuj.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="109.0, 544.0, 109.0, 547.0, 106.0, 547.0, 106.0, 561.0, 109.0, 561.0, 109.0, 624.0, 123.0, 624.0, 123.0, 561.0, 265.0, 561.0, 265.0, 547.0, 123.0, 547.0, 123.0, 544.0" coords2="109.0, 544.0, 109.0, 547.0, 106.0, 547.0, 106.0, 561.0, 109.0, 561.0, 109.0, 624.0, 123.0, 624.0, 123.0, 561.0, 265.0, 561.0, 265.0, 547.0, 123.0, 547.0, 123.0, 544.0" shape="poly" alt=":Relationship" id="areadiagram_map_jU3.jQWFYEDeSQwO_default" href="DBForeignKey_FU3_jQWFYEDeSQwN.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="110.0, 682.0, 110.0, 732.0, 124.0, 732.0, 124.0, 682.0" coords2="110.0, 682.0, 110.0, 732.0, 124.0, 732.0, 124.0, 682.0" shape="poly" alt=":Relationship" id="areadiagram_map_i03.jQWFYEDeSQwY_default" href="DBForeignKey_003_jQWFYEDeSQwX.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="313.0, 158.0, 313.0, 172.0, 368.0, 172.0, 368.0, 158.0" coords2="313.0, 158.0, 313.0, 172.0, 368.0, 172.0, 368.0, 158.0" shape="poly" alt=":Relationship" id="areadiagram_map_ToIQbQWFYEDe1QlC_default" href="DBForeignKey_loIQbQWFYEDe1QlB.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="151.0, 241.0, 151.0, 358.0, 165.0, 358.0, 165.0, 241.0" coords2="151.0, 241.0, 151.0, 358.0, 165.0, 358.0, 165.0, 241.0" shape="poly" alt=":Relationship" id="areadiagram_map_SN9MbQWFYEDe1Qsq_default" href="DBForeignKey_EN9MbQWFYEDe1Qsp.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="214.0, 434.0, 214.0, 448.0, 265.0, 448.0, 265.0, 434.0" coords2="214.0, 434.0, 214.0, 448.0, 265.0, 448.0, 265.0, 434.0" shape="poly" alt=":Relationship" id="areadiagram_map_tTiCbQWFYEDe1QwN_default" href="DBForeignKey_JTiCbQWFYEDe1QwM.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1169.0, 375.0, 1169.0, 460.0, 1183.0, 460.0, 1183.0, 375.0" coords2="1169.0, 375.0, 1169.0, 460.0, 1183.0, 460.0, 1183.0, 375.0" shape="poly" alt=":Relationship" id="areadiagram_map_2P.SbQWFYEDe1Q0I_default" href="DBForeignKey_SP_SbQWFYEDe1Q0H.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="902.0, 470.0, 902.0, 484.0, 1139.0, 484.0, 1139.0, 470.0" coords2="902.0, 470.0, 902.0, 484.0, 1139.0, 484.0, 1139.0, 470.0" shape="poly" alt=":Relationship" id="areadiagram_map_SyWybQWFYEDe1Q2I_default" href="DBForeignKey_kyWybQWFYEDe1Q2H.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="902.0, 545.0, 902.0, 559.0, 940.0, 559.0, 940.0, 545.0" coords2="902.0, 545.0, 902.0, 559.0, 940.0, 559.0, 940.0, 545.0" shape="poly" alt=":Relationship" id="areadiagram_map_FHYKbQWFYEDe1Q4T_default" href="DBForeignKey_hHYKbQWFYEDe1Q4S.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Reportes de posible posecion de la mascota perdida
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="940, 499, 1101, 633" coords2="940, 499, 1101, 633" shape="rect" alt="Te_Mac:Entity" id="areadiagram_map_8O6ibQWFYEDe1Qw5_default" href="DBTable_CO6ibQWFYEDe1Qw6.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Reportes de posibles avistamientos de una mascota perdida
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="1139, 460, 1300, 612" coords2="1139, 460, 1300, 612" shape="rect" alt="Ver_Mac:Entity" id="areadiagram_map_c_SibQWFYEDe1Qwu_default" href="DBTable_c_SibQWFYEDe1Qwv.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" coords="20, 624, 214, 682" coords2="20, 624, 214, 682" shape="rect" alt="Mac_AD_Vacunas:Entity" id="areadiagram_map_rU3.jQWFYEDeSQwR_default" href="DBTable_rU3_jQWFYEDeSQwS.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1097, 120, 1300, 178" coords2="1097, 120, 1300, 178" shape="rect" alt="Director_Fundacion:Entity" id="areadiagram_map_1Ro.jQWFYEDeSQud_default" href="DBTable_1Ro_jQWFYEDeSQue.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Observaciones de las condiciones del cliente para la adopcion de una 
+      mascotas
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="106, 147, 313, 241" coords2="106, 147, 313, 241" shape="rect" alt="Observa:Entity" id="areadiagram_map_rKEejQWFYEDeSQrc_default" href="DBTable_rKEejQWFYEDeSQrd.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Tipo de documento de los usuarios
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="631, 2, 789, 60" coords2="631, 2, 789, 60" shape="rect" alt="Tip_Doc:Entity" id="areadiagram_map_rQR4jQWFYEDeSQ9M_default" href="DBTable_rQR4jQWFYEDeSQ9N.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Barrios de bogota
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="1035, 299, 1193, 375" coords2="1035, 299, 1193, 375" shape="rect" alt="Bario:Entity" id="areadiagram_map_d78_DQWFYEDeSQmv_default" href="DBTable_d78_DQWFYEDeSQmw.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Las vacunas que posee el animal las cuales varian segun la especie
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="35, 732, 199, 789" coords2="35, 732, 199, 789" shape="rect" alt="Vacunas:Entity" id="areadiagram_map_8E5LDQWFYEDeSQrd_default" href="DBTable_8E5LDQWFYEDeSQre.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;&amp;quot;&amp;gt;
+      El nivel o tipo de condicion que le puede dar un cliente a la mascota
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="368, 138, 529, 197" coords2="368, 138, 529, 197" shape="rect" alt="Condicion:Entity" id="areadiagram_map_ioZZ9QWGAqAAqwzZ_default" href="DBTable_ioZZ9QWGAqAAqwza.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Mascotas en adopcion
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="265, 358, 448, 634" coords2="265, 358, 448, 634" shape="rect" alt="Mac_AD:Entity" id="areadiagram_map_7xLB9QWGAqAAqwmh_default" href="DBTable_7xLB9QWGAqAAqwmi.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Los procesos de adopcion los cuales solicita un cliente a una fundacion 
+      para poseer una mascota
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="49, 358, 214, 524" coords2="49, 358, 214, 524" shape="rect" alt="Proc_Adp:Entity" id="areadiagram_map_NVmB9QWGAqAAqwlc_default" href="DBTable_NVmB9QWGAqAAqwld.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Los eventos publicados de fundaciones o sedes para informar y atraer a 
+      clientes interesados
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="703, 700, 888, 884" coords2="703, 700, 888, 884" shape="rect" alt="Evento:Entity" id="areadiagram_map_rTS.9QWGAqAAqwjT_default" href="DBTable_rTS_9QWGAqAAqwjU.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;&amp;quot;&amp;gt;
+      estado de publicacion, todas aqui estan los diferentes estado en los que 
+      pueden cambiar las diferentes publicaciones realizadas por usuarios
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="500, 659, 661, 721" coords2="500, 659, 661, 721" shape="rect" alt="Estado_P:Entity" id="areadiagram_map_fflCtQWAUYC85QyQ_default" href="DBTable_fflCtQWAUYC85QyR.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;&amp;quot;&amp;gt;
+      la diversa variedad de razas existentes dependiendo de su especie
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="501, 434, 659, 510" coords2="501, 434, 659, 510" shape="rect" alt="Raza:Entity" id="areadiagram_map_8lSCtQWAUYC85Qw5_default" href="DBTable_8lSCtQWAUYC85Qw6.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;&amp;quot;&amp;gt;
+      El sexo de la mascota
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="501, 525, 660, 584" coords2="501, 525, 660, 584" shape="rect" alt="Sexo:Entity" id="areadiagram_map_pLn8tQWAUYC85Qvu_default" href="DBTable_pLn8tQWAUYC85Qvv.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Identificador unico de las diferentes especies
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="501, 345, 659, 404" coords2="501, 345, 659, 404" shape="rect" alt="Especie:Entity" id="areadiagram_map_lSKstQWAUYC85Quz_default" href="DBTable_lSKstQWAUYC85Qu0.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Publicaciones de Mascotas Perdias
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="723, 392, 902, 633" coords2="723, 392, 902, 633" shape="rect" alt="Mac_PR:Entity" id="areadiagram_map_wI7EtQWAUYC85Qmf_default" href="DBTable_wI7EtQWAUYC85Qmg.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Localidades de bogota
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="830, 299, 988, 376" coords2="830, 299, 988, 376" shape="rect" alt="Localidad:Entity" id="areadiagram_map_34I4tQWAUYC85QkJ_default" href="DBTable_34I4tQWAUYC85QkK.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Usuario con el rol director responsable de una fundacion y sus sedes
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="1346, 59, 1531, 226" coords2="1346, 59, 1531, 226" shape="rect" alt="Director:Entity" id="areadiagram_map_n7lotQWAUYC85QhZ_default" href="DBTable_n7lotQWAUYC85Qha.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Las sedes que pertenecen a una fundacion
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="1239, 308, 1443, 420" coords2="1239, 308, 1443, 420" shape="rect" alt="Sede:Entity" id="areadiagram_map_UHBE5QWFYEDcXhLx_default" href="DBTable_UHBE5QWFYEDcXhLy.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;&amp;quot;&amp;gt;
+      entidad manejada por un director la cual realiza actividades sin animo 
+      de lucro para el bienestar de las mascotas
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="830, 59, 1051, 242" coords2="830, 59, 1051, 242" shape="rect" alt="Fundacion:Entity" id="areadiagram_map_TfV45QWFYEDcXhIq_default" href="DBTable_TfV45QWFYEDcXhIr.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;&amp;quot;&amp;gt;
+      El Usuario con rol cliente, puede crear mascotas perdidas responder a 
+      mascotas perdidas , consultar adopciones y empezar un proceso de adopcion
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="603, 103, 788, 269" coords2="603, 103, 788, 269" shape="rect" alt="Client:Entity" id="areadiagram_map_o_sY5QWFYEDcXg_L_default" href="DBTable_Y_sY5QWFYEDcXg_M.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Database Tables			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="4" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="25%">
+<span class="TableHeaderText">Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td>
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+&nbsp;<a href="DBTable_CO6ibQWFYEDe1Qw6.html" class="ItemLink">Te_Mac : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Reportes de posible posecion de la mascota perdida</span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+&nbsp;<a href="DBTable_c_SibQWFYEDe1Qwv.html" class="ItemLink">Ver_Mac : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Reportes de posibles avistamientos de una mascota perdida</span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+&nbsp;<a href="DBTable_rU3_jQWFYEDeSQwS.html" class="ItemLink">Mac_AD_Vacunas : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+&nbsp;<a href="DBTable_1Ro_jQWFYEDeSQue.html" class="ItemLink">Director_Fundacion : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+&nbsp;<a href="DBTable_rKEejQWFYEDeSQrd.html" class="ItemLink">Observa : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Observaciones de las condiciones del cliente para la adopcion de una mascotas</span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+&nbsp;<a href="DBTable_rQR4jQWFYEDeSQ9N.html" class="ItemLink">Tip_Doc : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Tipo de documento de los usuarios</span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+&nbsp;<a href="DBTable_d78_DQWFYEDeSQmw.html" class="ItemLink">Bario : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Barrios de bogota</span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+&nbsp;<a href="DBTable_8E5LDQWFYEDeSQre.html" class="ItemLink">Vacunas : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Las vacunas que posee el animal las cuales varian segun la especie</span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+&nbsp;<a href="DBTable_ioZZ9QWGAqAAqwza.html" class="ItemLink">Condicion : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">El nivel o tipo de condicion que le puede dar un cliente a la mascota</span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+&nbsp;<a href="DBTable_7xLB9QWGAqAAqwmi.html" class="ItemLink">Mac_AD : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Mascotas en adopcion</span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+&nbsp;<a href="DBTable_NVmB9QWGAqAAqwld.html" class="ItemLink">Proc_Adp : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Los procesos de adopcion los cuales solicita un cliente a una fundacion para poseer una mascota</span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+&nbsp;<a href="DBTable_rTS_9QWGAqAAqwjU.html" class="ItemLink">Evento : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Los eventos publicados de fundaciones o sedes para informar y atraer a clientes interesados</span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+&nbsp;<a href="DBTable_fflCtQWAUYC85QyR.html" class="ItemLink">Estado_P : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">estado de publicacion, todas aqui estan los diferentes estado en los que pueden cambiar las diferentes publicaciones realizadas por usuarios</span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+&nbsp;<a href="DBTable_8lSCtQWAUYC85Qw6.html" class="ItemLink">Raza : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">la diversa variedad de razas existentes dependiendo de su especie</span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+&nbsp;<a href="DBTable_pLn8tQWAUYC85Qvv.html" class="ItemLink">Sexo : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">El sexo de la mascota</span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+&nbsp;<a href="DBTable_lSKstQWAUYC85Qu0.html" class="ItemLink">Especie : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Identificador unico de las diferentes especies</span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+&nbsp;<a href="DBTable_wI7EtQWAUYC85Qmg.html" class="ItemLink">Mac_PR : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Publicaciones de Mascotas Perdias</span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+&nbsp;<a href="DBTable_34I4tQWAUYC85QkK.html" class="ItemLink">Localidad : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Localidades de bogota</span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+&nbsp;<a href="DBTable_n7lotQWAUYC85Qha.html" class="ItemLink">Director : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Usuario con el rol director responsable de una fundacion y sus sedes</span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+&nbsp;<a href="DBTable_UHBE5QWFYEDcXhLy.html" class="ItemLink">Sede : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Las sedes que pertenecen a una fundacion</span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+&nbsp;<a href="DBTable_TfV45QWFYEDcXhIr.html" class="ItemLink">Fundacion : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">entidad manejada por un director la cual realiza actividades sin animo de lucro para el bienestar de las mascotas</span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+&nbsp;<a href="DBTable_Y_sY5QWFYEDcXg_M.html" class="ItemLink">Client : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">El Usuario con rol cliente, puede crear mascotas perdidas responder a mascotas perdidas , consultar adopciones y empezar un proceso de adopcion</span>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Te_Mac Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_CO6ibQWFYEDe1Qw6.html#h69SbQWFYEDe1Q0o" class="ItemLink">id_TM</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de posesion de la mascota perdida
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_CO6ibQWFYEDe1Qw6.html#J33SbQWFYEDe1Q00" class="ItemLink">foto</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varbinary(2000)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      foto de la mascota encontrada
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_CO6ibQWFYEDe1Qw6.html#Jk_SbQWFYEDe1Q03" class="ItemLink">desc</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Caracteristicas de la mascota que se encontro
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_CO6ibQWFYEDe1Qw6.html#tvAybQWFYEDe1Q06" class="ItemLink">direc</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Direcion exacta de donde se encuentra la mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_CO6ibQWFYEDe1Qw6.html#CYzybQWFYEDe1Q3r" class="ItemLink">id_MP</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de la mascota perdida
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_CO6ibQWFYEDe1Qw6.html#nX8KbQWFYEDe1Q48" class="ItemLink">fh_EM</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">timestamp(0)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Fecha y hora de encuentro de la mascota
+    </p>
+  </body>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Ver_Mac Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_c_SibQWFYEDe1Qwv.html#0OeibQWFYEDe1Qxd" class="ItemLink">id_VM</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de avistamientos de una mascota perdida
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_c_SibQWFYEDe1Qwv.html#RK8ybQWFYEDe1Q1i" class="ItemLink">id_MP</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de la mascota perdida a la cual se sospecha aver 
+      visto
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_c_SibQWFYEDe1Qwv.html#rzpibQWFYEDe1Qxj" class="ItemLink">id_Ba</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Barrio y localidad de bogota donde se sospecha aver visto a la mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_c_SibQWFYEDe1Qwv.html#cIRibQWFYEDe1Qxg" class="ItemLink">direc</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Direcion exacta del lugar donde se presume podria estar la mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_c_SibQWFYEDe1Qwv.html#_xFibQWFYEDe1Qxm" class="ItemLink">foto</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varbinary(2000)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Foto del lugar o de la presunta mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_c_SibQWFYEDe1Qwv.html#tUVibQWFYEDe1Qxp" class="ItemLink">fh_mv</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">timestamp(0)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Fecha y hora de avistamiento de la mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_c_SibQWFYEDe1Qwv.html#oMDibQWFYEDe1Qxs" class="ItemLink">descr</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Caracteristicas o especificaciones del lugar o la presunta mascota
+    </p>
+  </body>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Mac_AD_Vacunas Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_rU3_jQWFYEDeSQwS.html#o03.jQWFYEDeSQwU" class="ItemLink">Mac_ADid_Adp</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK / FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_rU3_jQWFYEDeSQwS.html#y03.jQWFYEDeSQwa" class="ItemLink">Vacunasid_VC</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK / FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Director_Fundacion Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_1Ro_jQWFYEDeSQue.html#vRo.jQWFYEDeSQug" class="ItemLink">Directorid_di</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK / FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_1Ro_jQWFYEDeSQue.html#cxo.jQWFYEDeSQum" class="ItemLink">Fundacionid_Fun</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK / FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Observa Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_rKEejQWFYEDeSQrd.html#yqEejQWFYEDeSQrl" class="ItemLink">id_OV</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de las orbservaciones de los procesos de adopcion
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_rKEejQWFYEDeSQrd.html#GIYQbQWFYEDe1QlF" class="ItemLink">id_CD</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de las condiciones que puede dar un cliente a una 
+      mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_rKEejQWFYEDeSQrd.html#wcKkbQWFYEDe1Ql_" class="ItemLink">best</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Posibles mejoras para la mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_rKEejQWFYEDeSQrd.html#yN9MbQWFYEDe1Qss" class="ItemLink">Proc_Adpid_PA</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Tip_Doc Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_rQR4jQWFYEDeSQ9N.html#lSp4jQWFYEDeSQ9X" class="ItemLink">id_TD</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico del tipo de documento de cada usuario
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_rQR4jQWFYEDeSQ9N.html#pK54jQWFYEDeSQ9a" class="ItemLink">tip_D</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(50)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Los diferentes tipos de documentos que puede tener cada usuario:
+    </p>
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Cedula de Ciudadania
+    </p>
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Cedula de Extrajeria
+    </p>
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Permiso Especial de Permanencia
+    </p>
+  </body>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Bario Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_d78_DQWFYEDeSQmw.html#7_XQjQWFYEDeSQyu" class="ItemLink">id_Ba</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico del barrio de bogota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_d78_DQWFYEDeSQmw.html#KTPQjQWFYEDeSQy1" class="ItemLink">barrio</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(50)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Barrios de &nbsp;bogota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_d78_DQWFYEDeSQmw.html#SHvQjQWFYEDeSQy4" class="ItemLink">id_Loc</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de la localidad de bogota
+    </p>
+  </body>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Vacunas Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_8E5LDQWFYEDeSQre.html#tVFLDQWFYEDeSQri" class="ItemLink">id_VC</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de las vacunas que posee una mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_8E5LDQWFYEDeSQre.html#7EVLDQWFYEDeSQrl" class="ItemLink">vacuna</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Condicion Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_ioZZ9QWGAqAAqwza.html#_blZ9QWGAqAAqw5D" class="ItemLink">id_CD</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de los tipos de condicion que puede dar un cliente a 
+      la mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_ioZZ9QWGAqAAqwza.html#ys1Z9QWGAqAAqw5G" class="ItemLink">condi</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Mac_AD Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_7xLB9QWGAqAAqwmi.html#2avB9QWGAqAAqwms" class="ItemLink">id_Adp</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de una mascota en adopcion
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_7xLB9QWGAqAAqwmi.html#02Ah9QWGAqAAqwmv" class="ItemLink">id_Sed</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de la sede y fundacion a la cual pertenece la mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_7xLB9QWGAqAAqwmi.html#hvwh9QWGAqAAqwm1" class="ItemLink">id_Sex</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de sexo de la mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_7xLB9QWGAqAAqwmi.html#HsYh9QWGAqAAqwm4" class="ItemLink">id_Rz</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de la raza y la especie de la mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_7xLB9QWGAqAAqwmi.html#Pb0h9QWGAqAAqwnB" class="ItemLink">id_EP</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de los diferentes estados de publicacion que puede 
+      tener
+    </p>
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Disponible, adoptada
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_7xLB9QWGAqAAqwmi.html#DkRh9QWGAqAAqwnQ" class="ItemLink">id_VC</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de las vacunas que tiene la mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_7xLB9QWGAqAAqwmi.html#yuEh9QWGAqAAqwm7" class="ItemLink">m_Nom</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(50)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Nombre que tiene la mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_7xLB9QWGAqAAqwmi.html#UkQh9QWGAqAAqwmy" class="ItemLink">edad</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">date(0)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      La edad que tiene la mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_7xLB9QWGAqAAqwmi.html#wpUh9QWGAqAAqwm." class="ItemLink">foto</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varbinary(2000)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Foto de la mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_7xLB9QWGAqAAqwmi.html#8ksh9QWGAqAAqwnE" class="ItemLink">fh_P_A</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">timestamp(0)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Fecha y hora de publicacion de una mascota para adopcion
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_7xLB9QWGAqAAqwmi.html#Q7Kh9QWGAqAAqwnH" class="ItemLink">fh_A_T</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">timestamp(0)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Fecha y hora de una adopcion terminada
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_7xLB9QWGAqAAqwmi.html#SA2h9QWGAqAAqwnK" class="ItemLink">descri</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Descripcion o informacion adicional de la Mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_7xLB9QWGAqAAqwmi.html#7bBh9QWGAqAAqwnN" class="ItemLink">esteril</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Si la mascota ya fue esterilizada o aun no
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_7xLB9QWGAqAAqwmi.html#DOxh9QWGAqAAqwnT" class="ItemLink">dpara</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Si la mascota para adopcion se encuentra desparacitada o aun no
+    </p>
+  </body>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Proc_Adp Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_NVmB9QWGAqAAqwld.html#.E.B9QWGAqAAqwlt" class="ItemLink">id_PA</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico del proceso de adopcion de una mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_NVmB9QWGAqAAqwld.html#6chB9QWGAqAAqwlw" class="ItemLink">id_CL</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico del cliente que empeza el proceso de adopcion
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_NVmB9QWGAqAAqwld.html#GexB9QWGAqAAqwlz" class="ItemLink">id_Adp</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de la mascota que se quiere adoptar
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_NVmB9QWGAqAAqwld.html#VRFB9QWGAqAAqwl8" class="ItemLink">id_EP</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico del estado en el que se encuentra un proceso de 
+      adopcion
+    </p>
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Aceptada, Pendiente, Rechasado
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_NVmB9QWGAqAAqwld.html#MPVB9QWGAqAAqwl_" class="ItemLink">direc</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(100)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Direcion de Residencia
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_NVmB9QWGAqAAqwld.html#PAtB9QWGAqAAqwmC" class="ItemLink">fh_I</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">timestamp(0)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Fecha y Hora de Inicio del proceso
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_NVmB9QWGAqAAqwld.html#qMdB9QWGAqAAqwmF" class="ItemLink">fh_F</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">timestamp(0)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      fecha y hora de fin del proceso
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_NVmB9QWGAqAAqwld.html#vMSQbQWFYEDe1Qla" class="ItemLink">id_OV</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de las observaciones y condiciones del cliente que 
+      hace el proceso
+    </p>
+  </body>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Evento Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_rTS_9QWGAqAAqwjU.html#Bw6.9QWGAqAAqwjl" class="ItemLink">id_EV</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico del evento
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_rTS_9QWGAqAAqwjU.html#HAW.9QWGAqAAqwjs" class="ItemLink">id_Sed</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de la sede a la cual pertenece el evento
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_rTS_9QWGAqAAqwjU.html#9R2.9QWGAqAAqwjv" class="ItemLink">id_Ep</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Estado en el que se encuentra un evento
+    </p>
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Activo
+    </p>
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Cancelado
+    </p>
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Finalizado
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_rTS_9QWGAqAAqwjU.html#Qie.9QWGAqAAqwjy" class="ItemLink">foto</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varbinary(2000)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Foto promocional, poster, cartelera, o imagenes del evento
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_rTS_9QWGAqAAqwjU.html#dwh.9QWGAqAAqwj1" class="ItemLink">descr</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Descripcion del Evento
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_rTS_9QWGAqAAqwjU.html#n_5.9QWGAqAAqwkN" class="ItemLink">ev_Nom</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(60)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Nombre del evento
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_rTS_9QWGAqAAqwjU.html#_bl.9QWGAqAAqwkQ" class="ItemLink">direc</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(100)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      direcion Exacta del Evento
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_rTS_9QWGAqAAqwjU.html#d81.9QWGAqAAqwkT" class="ItemLink">fh_I</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">timestamp(0)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Fecha y hora del inicio del evento
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_rTS_9QWGAqAAqwjU.html#Vyt.9QWGAqAAqwkW" class="ItemLink">fh_F</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">timestamp(0)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Fecha y hora de Finalizacion del evento
+    </p>
+  </body>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Estado_P Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_fflCtQWAUYC85QyR.html#N0dCtQWAUYC85QyV" class="ItemLink">id_Ep</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de los estados en los que se puede encontrar una 
+      publicacion
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_fflCtQWAUYC85QyR.html#GvDCtQWAUYC85QyY" class="ItemLink">est_Pu</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(30)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Los diferentes tipos de estados en los que puede esta una publicacion
+    </p>
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Perdida, Encontrada
+    </p>
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Disponible, Adoptada
+    </p>
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Activo, Cancelado, Finalizado
+    </p>
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Pendiente, Aceptada, Rechazada
+    </p>
+  </body>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Raza Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_8lSCtQWAUYC85Qw6.html#dgKCtQWAUYC85QxA" class="ItemLink">id_RZ</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de la Raza de una mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_8lSCtQWAUYC85Qw6.html#l4qCtQWAUYC85QxD" class="ItemLink">raza</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(100)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Las diferentes Razas
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_8lSCtQWAUYC85Qw6.html#stRIjQWFYEDeSQ4K" class="ItemLink">id_Esp</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de la especie de la mascota
+    </p>
+  </body>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Sexo Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_pLn8tQWAUYC85Qvv.html#K2P8tQWAUYC85Qvz" class="ItemLink">id_Sex</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico del sexo de una mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_pLn8tQWAUYC85Qvv.html#V.v8tQWAUYC85Qv2" class="ItemLink">sexo</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(50)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Los diferentes sexos de las mascotas
+    </p>
+  </body>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Especie Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_lSKstQWAUYC85Qu0.html#o5mstQWAUYC85Qu4" class="ItemLink">id_Esp</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_lSKstQWAUYC85Qu0.html#8SWctQWAUYC85Qu7" class="ItemLink">especie</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(50)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Las diversas especies de mascotas
+    </p>
+  </body>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Mac_PR Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_wI7EtQWAUYC85Qmg.html#lJvEtQWAUYC85Qmk" class="ItemLink">id_MP</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de una mascota perdia
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_wI7EtQWAUYC85Qmg.html#7boktQWAUYC85QnD" class="ItemLink">id_Cli</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico del cliente al cual le pertenece la mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_wI7EtQWAUYC85Qmg.html#XzKktQWAUYC85QnP" class="ItemLink">id_Sex</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico del sexo de la mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_wI7EtQWAUYC85Qmg.html#s0mktQWAUYC85QnS" class="ItemLink">id_RZ</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de la especie y raza a la cual pertenece la mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_wI7EtQWAUYC85Qmg.html#T_uktQWAUYC85QnY" class="ItemLink">id_Ep</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico del estado en el cual se encuentra la mascota
+    </p>
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Perdida o Encontrada
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_wI7EtQWAUYC85Qmg.html#9AvwjQWFYEDeSQ2K" class="ItemLink">id_Ba</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Barrio y localidad en el cual se perdio la mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_wI7EtQWAUYC85Qmg.html#rbsktQWAUYC85QnJ" class="ItemLink">m_Nom</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(50)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Nombre de la mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_wI7EtQWAUYC85Qmg.html#.SWktQWAUYC85QnV" class="ItemLink">foto</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varbinary(2000)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Foto de la mascota perdida
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_wI7EtQWAUYC85Qmg.html#BqUUtQWAUYC85Qnx" class="ItemLink">edad</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">date(0)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      La edad que tiene la mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_wI7EtQWAUYC85Qmg.html#hzHktQWAUYC85Qnb" class="ItemLink">direc</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(100)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Direcion donde se perdio la mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_wI7EtQWAUYC85Qmg.html#RyPktQWAUYC85Qne" class="ItemLink">fh_p</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">timestamp(0)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Fecha y hora en la que se perdio la mascota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_wI7EtQWAUYC85Qmg.html#3uoUtQWAUYC85Qnr" class="ItemLink">descri</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Caracteristicas, rasgos adicionales, o informacion adicional de la 
+      mascota
+    </p>
+  </body>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Localidad Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_34I4tQWAUYC85QkK.html#mEE4tQWAUYC85QkO" class="ItemLink">id_Loc</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico del las localidades de bogota
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_34I4tQWAUYC85QkK.html#_Kk4tQWAUYC85QkR" class="ItemLink">loc</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(50)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Las diferentes localidades de bogota
+    </p>
+  </body>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Director Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_n7lotQWAUYC85Qha.html#2zdotQWAUYC85Qhl" class="ItemLink">id_di</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de Director
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_n7lotQWAUYC85Qha.html#j8Ik5QWFYEDcXhM8" class="ItemLink">nom_Di</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(55)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Nombre del Director
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_n7lotQWAUYC85Qha.html#tiYk5QWFYEDcXhM_" class="ItemLink">ape_di</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(55)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Apellido del director
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_n7lotQWAUYC85Qha.html#vY0k5QWFYEDcXhNI" class="ItemLink">id_TD</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico del tipo de documento que posee el director
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_n7lotQWAUYC85Qha.html#Iy6k5QWFYEDcXhNL" class="ItemLink">doc</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Numero de documeto del Director
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_n7lotQWAUYC85Qha.html#Il4k5QWFYEDcXhNC" class="ItemLink">tel</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(15)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Numero telefonico del Director
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_n7lotQWAUYC85Qha.html#siUk5QWFYEDcXhNF" class="ItemLink">correo</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(100)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Correo electronico del director
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_n7lotQWAUYC85Qha.html#ZV6WjQWFYEDeSQlL" class="ItemLink">fec_na</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">date(0)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Fecha exacta de nacimiento del director
+    </p>
+  </body>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Sede Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_UHBE5QWFYEDcXhLy.html#DolE5QWFYEDcXhMR" class="ItemLink">id_Sed</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de la Sede de una Fundacion
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_UHBE5QWFYEDcXhLy.html#NBVE5QWFYEDcXhMU" class="ItemLink">id_Fun</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de la fundacion a la cual pertenece la sede
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_UHBE5QWFYEDcXhLy.html#bqS4tQWAUYC85QlZ" class="ItemLink">id_Ba</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico del barrio y localida de bogota en donde se 
+      encuentra la sede
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_UHBE5QWFYEDcXhLy.html#0EtE5QWFYEDcXhMX" class="ItemLink">nom_Se</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(60)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      nombre de la sede
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_UHBE5QWFYEDcXhLy.html#wErYtQWAUYC85QjQ" class="ItemLink">tel</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(15)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      numero telefonico de la sede
+    </p>
+  </body>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Fundacion Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_TfV45QWFYEDcXhIr.html#QUt45QWFYEDcXhIv" class="ItemLink">id_Fun</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico de la fundacion de mascotas
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_TfV45QWFYEDcXhIr.html#sh945QWFYEDcXhIy" class="ItemLink">id_Di</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico del director responsable de la fundacion
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_TfV45QWFYEDcXhIr.html#cAT45QWFYEDcXhI1" class="ItemLink">nit</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(15)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Numero de identificacion tributaria de la fundacion
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_TfV45QWFYEDcXhIr.html#pvL45QWFYEDcXhI4" class="ItemLink">tel</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(15)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      numero telefonico de la fundacion
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_TfV45QWFYEDcXhIr.html#spb45QWFYEDcXhI7" class="ItemLink">correo</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(100)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      correo electronico de la fundacion
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_TfV45QWFYEDcXhIr.html#I_745QWFYEDcXhI." class="ItemLink">nom</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(50)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Nombre de la fundacion
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_TfV45QWFYEDcXhIr.html#s9n45QWFYEDcXhJB" class="ItemLink">red_S</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      redes sociales de la fundacion
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_TfV45QWFYEDcXhIr.html#s85wjQWFYEDeSQ1O" class="ItemLink">mision</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      la mision de la fundacion
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_TfV45QWFYEDcXhIr.html#GOlwjQWFYEDeSQ1R" class="ItemLink">vision</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      la vision de la fundacion
+    </p>
+  </body>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Client Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_Y_sY5QWFYEDcXg_M.html#XWyY5QWFYEDcXg_R" class="ItemLink">id_cli</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico del cliente
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_Y_sY5QWFYEDcXg_M.html#n3aY5QWFYEDcXg_U" class="ItemLink">nom</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(50)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Nombre del cliente
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_Y_sY5QWFYEDcXg_M.html#_y2Y5QWFYEDcXg_X" class="ItemLink">ape</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(50)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Apellido del cliente
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_Y_sY5QWFYEDcXg_M.html#FLOY5QWFYEDcXg_a" class="ItemLink">id_TD</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">smallint(5)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Identificador unico del tipo de documento
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_Y_sY5QWFYEDcXg_M.html#4MBY5QWFYEDcXg_d" class="ItemLink">doc</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      numero de documento del cliente
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_Y_sY5QWFYEDcXg_M.html#YW5Y5QWFYEDcXg_j" class="ItemLink">correo</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(100)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      correo electronico del cliente
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_Y_sY5QWFYEDcXg_M.html#BOxY5QWFYEDcXg_g" class="ItemLink">tel</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(15)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      numero telefonico del cliente
+    </p>
+  </body>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+<a href="DBTable_Y_sY5QWFYEDcXg_M.html#jgMWjQWFYEDeSQkS" class="ItemLink">fec_na</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">date(0)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent Documentation">
+<head>
+    
+  </head>
+  <body style="color:#000000;margin-right:0;font-weight:normal;margin-left:0;font-size:12px;font-family:Dialog;">
+    <p style="margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;margin-top:0pt;">
+      Fecha de nacimiento del cliente
+    </p>
+  </body>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<div style="height: 20px">
+	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		CS PPperdidas	</div>
+</body>
+</html>
